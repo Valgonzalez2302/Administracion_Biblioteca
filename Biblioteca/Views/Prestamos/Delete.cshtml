@@ -1,0 +1,70 @@
+﻿@model Biblioteca.Models.Prestamo
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+@if (@ViewBag.ErrorMessage != null)
+{
+    <h3 style="color:red">
+        @ViewBag.ErrorMessage
+    </h3>
+}
+
+@if (@ViewBag.Info != null)
+{
+    <h3 style="color:darkblue">
+        @ViewBag.Info
+    </h3>
+}
+
+<h3>¿Está seguro de que quiere eliminar el prestamo?</h3>
+<div>
+    <div class="card">
+        <div class="card-header text-black">
+            Detalles del prestamo
+        </div>
+        <div class="card-body">
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Usuario.Nombres)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Usuario.Nombres)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FechaInicio)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FechaInicio)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FechaFin)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FechaFin)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-outline-warning" />
+            @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-outline-danger" })
+        </div>
+    }
+</div>

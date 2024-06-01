@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Biblioteca.Models.Ejemplar>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ejemplares</h2>
+
+<div class="card">
+    <h5 class="card-header">@Html.ActionLink("Ingresar Ejemplar", "Create", new { }, new { @class = "btn btn-outline-info" })</h5>
+    <div class="card-body">
+
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Libro.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumeroCopias)
+                </th>
+               
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Libro.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumeroCopias)
+                    </td>
+                    
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.EjemplarId }, new { @class = "btn btn-outline-primary" })
+                        @Html.ActionLink("Detalles", "Details", new { id = item.EjemplarId }, new { @class = "btn btn-outline-success" })
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.EjemplarId }, new { @class = "btn btn-outline-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

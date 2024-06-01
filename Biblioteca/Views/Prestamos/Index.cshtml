@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Biblioteca.Models.Prestamo>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Prestamos</h2>
+<div class="card">
+    <h5 class="card-header"> @Html.ActionLink("Crear Nuevo Prestamo", "Create", new { }, new { @class = "btn btn-outline-info" })</h5>
+    <div class="card-body">
+
+        <table class="table table-striped table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Usuario.NombreCompleto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaInicio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaFin)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usuario.NombreCompleto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaInicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaFin)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.PrestamoId }, new { @class = "btn btn-outline-primary" })
+                        @Html.ActionLink("Detalles", "Details", new { id = item.PrestamoId }, new { @class = "btn btn-outline-success" })
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.PrestamoId }, new { @class = "btn btn-outline-danger" })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

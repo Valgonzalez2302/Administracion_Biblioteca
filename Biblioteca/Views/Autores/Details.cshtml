@@ -1,0 +1,58 @@
+﻿@model Biblioteca.Models.Autor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <div class="card">
+        <div class="card-header">
+            Autor
+        </div>
+        <div class="card-body">
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Nombres)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Nombres)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Apellidos)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Apellidos)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FechaNacimiento)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FechaNacimiento)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Documento)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Documento)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+
+    <hr />
+</div>
+        <p>
+            @Html.ActionLink("Editar", "Edit", new { id = Model.AutorId }, new { @class = "btn btn-outline-info" })
+            @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-outline-danger" })
+        </p>

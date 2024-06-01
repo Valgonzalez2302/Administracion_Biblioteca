@@ -1,0 +1,84 @@
+﻿@model Biblioteca.Models.PrestamoDetailsView
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <div class="card">
+        <div class="card-header">
+            Prestamo
+        </div>
+        <div class="card-body">
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Usuario)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Usuario)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FechaInicio)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FechaInicio)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.FechaFin)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.FechaFin)
+                </dd>
+
+            </dl>
+
+        </div>
+    </div>
+
+    <hr />
+
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.PrestamoId }, new { @class = "btn btn-outline-info" })
+    @Html.ActionLink("Prestar Ejemplar", "AddEjemplar", new { prestamoId = Model.PrestamoId }, new { @class = "btn btn-outline-success" })
+    @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-outline-danger" })
+</p>
+
+<h3>Ejemplares Prestados</h3>
+@if (Model.PrestamoEjemplares.Count == 0)
+{
+    <h2 class="text-danger">No hay ejemplares registrados</h2>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => Model.PrestamoEjemplares[0].Ejemplares.Libro.Nombre)
+            </th>
+        </tr>
+
+        @for (int i = 0; i < Model.PrestamoEjemplares.Count; i++)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => Model.PrestamoEjemplares[i].Ejemplares.Libro.Nombre)
+                </td>
+                <td>
+                    @Html.ActionLink("Devolver Ejemplar", "RetirarLibro", new { id = Model.PrestamoEjemplares[i].PrestamoEjemplarId },
+                   new { @class = "btn btn-outline-danger", onclick = "return confirm('¿Está seguro de retirar el ejemplar de este préstamo?');", }
+               )
+                </td>
+            </tr>
+        }
+
+    </table>
+}

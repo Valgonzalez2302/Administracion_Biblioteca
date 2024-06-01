@@ -1,0 +1,46 @@
+﻿@model Biblioteca.Models.Ejemplar
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <div class="card">
+        <div class="card-header">
+            Ejemplar
+        </div>
+        <div class="card-body">
+
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Libro.Nombre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Libro.Nombre)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.NumeroCopias)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.NumeroCopias)
+                </dd>
+
+              
+
+            </dl>
+
+        </div>
+    </div>
+
+    <hr />
+
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.EjemplarId }, new { @class = "btn btn-outline-info" })
+    @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-outline-danger" })
+</p>
